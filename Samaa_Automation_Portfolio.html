@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سماء أوتوميشن | Samaa Automation - حلول الأتمتة والذكاء الاصطناعي</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        sans: ['Cairo', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        tg: {
+                            blue: '#24A1DE',
+                            sky: '#29b6f6',
+                            hover: '#1e88e5',
+                            darkBlue: '#17212b',
+                            bubble: '#2b5278',
+                            chatBg: '#0e1621',
+                            header: '#242f3d'
+                        },
+                        samaa: {
+                            cyan: '#06b6d4',
+                            sky: '#0284c7',
+                            emerald: '#10b981',
+                            dark: '#070b14',
+                            card: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #070b14;
+            color: #f1f5f9;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(36, 161, 222, 0.35);
+            border-radius: 9999px;
+        }
+        .glass-panel {
+            background: rgba(11, 19, 36, 0.88);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .tg-chat-canvas {
+            background-color: #0e1621;
+            background-image: radial-gradient(rgba(36, 161, 222, 0.14) 1.2px, transparent 1.2px);
+            background-size: 20px 20px;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        .live-glow {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+        }
+        /* Responsive safeguards for narrow phones, tablets and desktop */
+        *, *::before, *::after { box-sizing: border-box; }
+        html { scroll-padding-top: 1rem; -webkit-text-size-adjust: 100%; }
+        body { min-width: 320px; width: 100%; overflow-x: clip; }
+        img, video, canvas, svg { max-width: 100%; }
+        pre, code { overflow-wrap: anywhere; }
+        a, button { touch-action: manipulation; }
+        button, input, select, textarea { font: inherit; }
+        @media (max-width: 640px) {
+            section { scroll-margin-top: 1rem; }
+            h1 { overflow-wrap: anywhere; }
+            .glass-card, .glass-panel { backdrop-filter: blur(10px); }
+            .mobile-nav-link { display: block; padding: .8rem 1rem; border-radius: .75rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-slate-950 overflow-x-hidden">
+
+    <!-- Global Top Banner: Live Bot Notice -->
+    <div class="bg-gradient-to-r from-sky-950 via-slate-900 to-emerald-950 border-b border-sky-500/30 text-white text-xs sm:text-sm py-2.5 px-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-right">
+            <div class="flex items-center gap-2.5 justify-center sm:justify-start">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                </span>
+                <span class="font-bold text-emerald-300">نسخة الإنتاج الحية جاهزة للتجربة الفعلية الآن:</span>
+                <span class="hidden md:inline text-slate-300">جرب البوت بنفسك مباشرة عبر تليجرام</span>
+                <span class="bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded-md font-mono border border-sky-400/30 font-bold">@Pharmacy_Bot_text_bot</span>
+            </div>
+            <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs transition-all shadow-md active:scale-95">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <span>فتح البوت في Telegram الآن</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="glass-panel border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-sky-500 to-emerald-400 flex items-center justify-center text-slate-950 shadow-lg shadow-cyan-500/25">
+                    <i data-lucide="cloud-lightning" class="w-6 h-6 stroke-[2.4]"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-black tracking-tight text-white flex items-center gap-2">
+                        سماء أوتوميشن <span class="text-xs px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold">AI Automation</span>
+                    </span>
+                    <p class="text-[11px] text-slate-400 hidden sm:block">Chatbots & Business Automation عبر منصات متعددة</p>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-300">
+                <a href="#pharmacist-solutions" class="hover:text-cyan-400 transition-colors">مشاكل الصيدلي وحلولها</a>
+                <a href="#live-demo" class="hover:text-sky-400 transition-colors flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>التجربة الحية (تليجرام)</span>
+                </a>
+                <a href="#simulator" class="hover:text-cyan-400 transition-colors">المحاكي التفاعلي</a>
+                <a href="#platforms" class="hover:text-cyan-400 transition-colors">المنصات</a>
+                <a href="#services" class="hover:text-cyan-400 transition-colors">خدمات سماء</a>
+                <a href="#architecture" class="hover:text-cyan-400 transition-colors">البنية التقنية</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="px-3 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-sky-500/25 flex items-center gap-2 active:scale-95 transition-all whitespace-nowrap">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span class="hidden sm:inline">جرّب @Pharmacy_Bot_text_bot</span>
+                    <span class="sm:hidden">جرّبي البوت</span>
+                </a>
+                <button type="button" id="mobileMenuToggle" aria-label="فتح قائمة التنقل" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden w-10 h-10 rounded-xl border border-slate-700 bg-slate-900 text-white flex items-center justify-center">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+        <nav id="mobileMenu" class="hidden lg:hidden border-t border-slate-800 px-4 py-3 space-y-1 text-sm font-semibold text-slate-200" aria-label="قائمة التنقل للموبايل">
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#pharmacist-solutions">مشاكل الصيدلي وحلولها</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#live-demo">التجربة الحية (تليجرام)</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#simulator">المحاكي التفاعلي</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#platforms">المنصات</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#services">خدمات سماء</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#architecture">البنية التقنية</a>
+            <a class="mobile-nav-link hover:bg-slate-800 hover:text-cyan-300" href="#contact">تواصل / طلب مشروع</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-20 overflow-hidden">
+        <div class="absolute top-1/4 -right-20 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 -left-20 w-96 h-96 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto space-y-6">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/90 border border-sky-500/40 text-xs sm:text-sm font-semibold shadow-lg">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-slate-300">البوت الحقيقي متاح للتشغيل المباشر الآن:</span>
+                    <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-mono font-bold underline flex items-center gap-1">
+                        @Pharmacy_Bot_text_bot
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                    حلول ذكية لأتمتة شغلك <br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-400 via-cyan-300 to-emerald-400">
+                        Chatbots & Business Automation
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+                    أبني حلول أتمتة مخصصة تساعد الأنشطة التجارية على الرد على العملاء، تنظيم الطلبات، معالجة البيانات، وتقليل المهام المتكررة. تقدري تشوفي مشروع الصيدلية العامل على Telegram، أما أي تكامل على WhatsApp أو Messenger أو موقع إلكتروني فيتحدد ويتنفذ حسب احتياج كل عميل.
+                </p>
+
+                <!-- Action CTAs -->
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 hover:brightness-110 text-slate-950 font-black text-base shadow-xl shadow-sky-500/25 active:scale-95 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                        <span>تشغيل البوت الحي على Telegram (@Pharmacy_Bot_text_bot)</span>
+                    </a>
+                    <a href="#simulator" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-white font-bold text-base transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="smartphone" class="w-5 h-5 text-sky-400"></i>
+                        <span>تجربة المحاكي داخل الصفحة أولاً</span>
+                    </a>
+                </div>
+
+                <div class="pt-1 text-center text-sm text-slate-400">عندك فكرة أو مهمة متكررة عايز تأتمتها؟ <a href="#project-brief" class="text-cyan-300 font-bold underline underline-offset-4">احكيلي عن مشروعك</a></div>
+
+                <!-- Live Bot Direct Info Card -->
+                <div class="pt-6">
+                    <div class="glass-card max-w-xl mx-auto rounded-2xl p-4 border border-sky-500/30 bg-sky-950/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-right">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-sky-500 text-slate-950 flex items-center justify-center font-black">
+                                <i data-lucide="bot" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-white flex items-center gap-2">
+                                    <span>بوت الصيدلية الفعلي (Live Production)</span>
+                                    <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">24/7 Online</span>
+                                </div>
+                                <div class="text-[11px] text-slate-400 font-mono">https://t.me/Pharmacy_Bot_text_bot</div>
+                            </div>
+                        </div>
+                        <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap">
+                            <span>ابدأ محادثة حقيقية</span>
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep-Dive Section: Pharmacist Pain Points & Engineering Solutions -->
+    <section id="pharmacist-solutions" class="py-20 bg-slate-950/80 border-y border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold mb-3">
+                    <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+                    <span>الهندسة الطبية والبرمجية التخصصية</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">مشاكل الصيدلي اليومية.. وكيف حللناها هندسياً</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    دراسة حالة واقعية بنيناها خصيصاً داخل بوت <strong>@Pharmacy_Bot_text_bot</strong> لحل أزمات الصيدليات المستمرة:
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                
+                <!-- Problem 1: Handwriting & OCR -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-sky-500/40 transition-all">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                <i data-lucide="alert-octagon" class="w-4 h-4"></i> المشكلة الأولى
+                            </div>
+                            <h3 class="text-xl font-bold text-white">خط اليد المعقد في الروشتات وإهدار وقت الصيدلي في فك الشفرة</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                استقبال عشرات صور الروشتات المشوشة أو غير واضحة المعالم، مما يستهلك من 5 إلى 15 دقيقة لكل روشتة مع مخاطر الخطأ البشري في قراءة اسم الصنف والجرعة.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-1 hidden lg:flex justify-center text-slate-600">
+                            <i data-lucide="arrow-left" class="w-6 h-6 text-sky-400"></i>
+                        </div>
+                        <div class="lg:col-span-6 p-5 rounded-2xl bg-sky-950/25 border border-sky-500/30 space-y-2">
+                            <div class="flex items-center gap-2 text-sky-400 text-xs font-bold uppercase">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> حل سماء أوتوميشن في البوت
+                            </div>
+                            <h4 class="text-base font-bold text-white">معالجة بالرؤية الحاسوبية (Vision AI) + مطابقة دليل الأدوية الوطني</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                خط معالجة ذكي يحلل الصورة، يستخرج أسماء المواد الفعالة والجرعات المحتملة، ويطابقها بقاعدة بيانات الصيدلية والمخزون، ليقدم للصيدلي مسودة دقيقة للاعتماد بضغطة زر.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-sky-500/20 text-sky-300 font-mono">Vision OCR</span>
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 font-mono">National Drug DB</span>
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-mono">Instant Extraction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 2: Shortages & Substitutes -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-emerald-500/40 transition-all">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                <i data-lucide="alert-octagon" class="w-4 h-4"></i> المشكلة الثانية
+                            </div>
+                            <h3 class="text-xl font-bold text-white">نواقص الأدوية والأسئلة المتكررة: "عندكم بديل بنفس المفعول؟"</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                عندما ينقص دواء تجاري شهير، ينهال المرضى بأسئلة متكررة عن البدائل والأسعار، مما يشتت الصيدلي ويضيع مبيعات لصالح صيدليات منافسة.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-1 hidden lg:flex justify-center text-slate-600">
+                            <i data-lucide="arrow-left" class="w-6 h-6 text-emerald-400"></i>
+                        </div>
+                        <div class="lg:col-span-6 p-5 rounded-2xl bg-emerald-950/25 border border-emerald-500/30 space-y-2">
+                            <div class="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase">
+                                <i data-lucide="repeat" class="w-4 h-4"></i> حل سماء أوتوميشن في البوت
+                            </div>
+                            <h4 class="text-base font-bold text-white">محرك اقتراح البدائل بالمادة الفعالة (Active Ingredient Engine)</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                البوت يحدد المادة الفعالة فوراً للدواء الناقص، ويبحث في المخزون المتوفر في الصيدلية، ويعرض على المريض البدائل المكافئة طبياً مع أسعارها وتوافرها بدقة.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-mono">Active Ingredient Engine</span>
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 font-mono">Stock Cross-Match</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 3: Peak Hours & Late Night -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-cyan-500/40 transition-all">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                <i data-lucide="alert-octagon" class="w-4 h-4"></i> المشكلة الثالثة
+                            </div>
+                            <h3 class="text-xl font-bold text-white">ضغط أوقات الذروة وخارج ساعات العمل (2:00 بعد منتصف الليل)</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                المرضى على الكاونتر يحتاجون اهتماماً كاملاً، بينما تتراكم الرسائل على الشات بالساعات، ويفقد المريض الثقة بسبب بطء الرد ليلاً.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-1 hidden lg:flex justify-center text-slate-600">
+                            <i data-lucide="arrow-left" class="w-6 h-6 text-cyan-400"></i>
+                        </div>
+                        <div class="lg:col-span-6 p-5 rounded-2xl bg-cyan-950/25 border border-cyan-500/30 space-y-2">
+                            <div class="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase">
+                                <i data-lucide="clock-alert" class="w-4 h-4"></i> حل سماء أوتوميشن في البوت
+                            </div>
+                            <h4 class="text-base font-bold text-white">رد آلي في 3 ثوانٍ 24/7 مع تصعيد طارئ للصيدلي البشري</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                الرد التلقائي الفوري على استفسارات الأسعار والعناوين والمخزون، وتنبيه الصيدلي المناوب فورياً عند رصد كلمات الطوارئ أو الحالات الحرجة.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-cyan-500/20 text-cyan-300 font-mono">24/7 Zero Latency</span>
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 font-mono">Emergency Escalation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Problem 4: Messy Addresses & Delivery -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-indigo-500/40 transition-all">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-5 space-y-3">
+                            <div class="flex items-center gap-2 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                                <i data-lucide="alert-octagon" class="w-4 h-4"></i> المشكلة الرابعة
+                            </div>
+                            <h3 class="text-xl font-bold text-white">فوضى تفريغ العناوين وتأخر الدليفري بسبب أخطاء الإملاء</h3>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                إرسال العميل لعناوين ناقصة أو أرقام هواتف غير دقيقة، مما يعطل الطيارين ويؤخر وصول الأدوية الحرجة للمرضى.
+                            </p>
+                        </div>
+                        <div class="lg:col-span-1 hidden lg:flex justify-center text-slate-600">
+                            <i data-lucide="arrow-left" class="w-6 h-6 text-indigo-400"></i>
+                        </div>
+                        <div class="lg:col-span-6 p-5 rounded-2xl bg-indigo-950/25 border border-indigo-500/30 space-y-2">
+                            <div class="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase">
+                                <i data-lucide="map-pin-check" class="w-4 h-4"></i> حل سماء أوتوميشن في البوت
+                            </div>
+                            <h4 class="text-base font-bold text-white">تجميع بيانات مهيكلة وموقع GPS تلقائياً لنظام الـ POS</h4>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                البوت يجمع الاسم، رقم الهاتف، العنوان بالتفصيل، ورابط الخرائط الجغرافي بشكل منظم ومباشر دون تدخل يدوي، ويدرجه في أمر التوصيل.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-indigo-500/20 text-indigo-300 font-mono">Structured Data Capture</span>
+                                <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 font-mono">Delivery Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Showcase: Direct Telegram Bot Live Callout -->
+    <section id="live-demo" class="py-16 relative bg-gradient-to-b from-[#070b14] via-[#091829] to-[#070b14] border-b border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 border-2 border-sky-500/40 relative overflow-hidden shadow-2xl">
+                <div class="absolute -top-24 -left-24 w-72 h-72 bg-sky-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+                    <div class="space-y-4 text-center lg:text-right">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>البوت المتاح للتجربة الحية الفعلية الآن: تليجرام فقط</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-4xl font-black text-white">
+                            جرب بوت الصيدلية الحي بنفسك: <br>
+                            <span class="text-sky-400 font-mono">@Pharmacy_Bot_text_bot</span>
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
+                            افتح تطبيق تليجرام وأرسل أي استفسار دوائي (مثال: "هل متوفر بنادول كولد آند فلو وبكام؟" أو "ما بديل أوجمنتين؟") وراقب سرعة ودقة النظام بنفسك في الوقت الفعلي.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-3 w-full lg:w-auto shrink-0">
+                        <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-slate-950 font-black text-base shadow-xl shadow-sky-500/30 flex items-center justify-center gap-2.5 active:scale-95 transition-all">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            <span>فتح البوت في Telegram (@Pharmacy_Bot_text_bot)</span>
+                        </a>
+                        <button onclick="copyBotLink()" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                            <i data-lucide="copy" class="w-4 h-4 text-sky-400"></i>
+                            <span id="copyLinkText">نسخ رابط البوت المباشر</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulator Section (Telegram First) -->
+    <section id="simulator" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-sky-400 text-xs font-bold tracking-wider uppercase">المحاكي التفاعلي داخل الصفحة</span>
+                <h2 class="text-3xl font-black text-white mt-1">جرّب سيناريوهات البوت على Telegram</h2>
+                <p class="text-sm text-slate-400 mt-2">
+                    يمكنك تجربة منطق البوت التفاعلي هنا مباشرة، أو فتح البوت الحقيقي على تطبيق تليجرام في أي وقت:
+                </p>
+            </div>
+
+            <!-- Direct Live Telegram Action Badge -->
+            <div class="text-center mb-8">
+                <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-950/80 border border-sky-400/50 hover:bg-sky-900/80 text-sky-300 text-xs sm:text-sm font-bold transition-all shadow-md group">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>تريد التجربة على تليجرام الحقيقي الآن؟</span>
+                    <span class="font-mono text-white underline group-hover:text-cyan-300">@Pharmacy_Bot_text_bot</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left: Interactive Presets & Instructions -->
+                <div class="lg:col-span-5 space-y-6 order-2 lg:order-1">
+                    <div class="glass-card p-6 rounded-3xl border-slate-800">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i data-lucide="play" class="w-5 h-5 text-sky-400"></i>
+                                <span>اختَر سيناريو لرؤية شكل الرد التجريبي:</span>
+                            </h3>
+                            <span class="text-[11px] px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-bold border border-sky-500/30">
+                                Telegram Bot
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-4">
+                            اضغط على أي سيناريو، وهيظهر السؤال والرد داخل شاشة الموبايل الموجودة جنبك. دي محاكاة توضيحية داخل الموقع؛ لتجربة البوت الحقيقي استخدم رابط Telegram أسفلها.
+                        </p>
+                        
+                        <div class="flex flex-col gap-2.5">
+                            <button onclick="triggerSimPreset('هل متوفر بنادول كولد آند فلو الأزرق وبكام؟')" class="text-right px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-sky-950/40 border border-slate-700/80 hover:border-sky-500/50 text-slate-200 text-xs sm:text-sm font-medium transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="search" class="w-4 h-4 text-sky-400"></i>
+                                    <span>سعر وتوفر بنادول كولد آند فلو الأزرق؟</span>
+                                </span>
+                                <i data-lucide="arrow-left" class="w-4 h-4 text-slate-500 group-hover:text-sky-400 transition-colors"></i>
+                            </button>
+
+                            <button onclick="triggerSimPreset('عايز بديل بنفس المادة الفعالة لأوجمنتين 1 جم')" class="text-right px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-emerald-950/40 border border-slate-700/80 hover:border-emerald-500/50 text-slate-200 text-xs sm:text-sm font-medium transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="repeat" class="w-4 h-4 text-emerald-400"></i>
+                                    <span>أوجمنتين 1 جم ناقص.. ما هو البديل؟</span>
+                                </span>
+                                <i data-lucide="arrow-left" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors"></i>
+                            </button>
+
+                            <button onclick="simulatePrescriptionFlow()" class="text-right px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-cyan-950/40 border border-slate-700/80 hover:border-cyan-500/50 text-slate-200 text-xs sm:text-sm font-medium transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+                                    <span>إرسال صورة روشتة بخط اليد (Vision OCR)</span>
+                                </span>
+                                <i data-lucide="arrow-left" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors"></i>
+                            </button>
+
+                            <button onclick="triggerSimPreset('عايز أكلم الصيدلي فوراً لحالة طارئة')" class="text-right px-4 py-3 rounded-xl bg-slate-800/80 hover:bg-amber-950/40 border border-slate-700/80 hover:border-amber-500/50 text-slate-200 text-xs sm:text-sm font-medium transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="phone-call" class="w-4 h-4 text-amber-400"></i>
+                                    <span>حالة طارئة.. تحويل فوري لصيدلي مناوب</span>
+                                </span>
+                                <i data-lucide="arrow-left" class="w-4 h-4 text-slate-500 group-hover:text-amber-400 transition-colors"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Direct Link CTA Card -->
+                    <div class="glass-card p-5 rounded-2xl border-sky-500/30 bg-sky-950/20 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="send" class="w-6 h-6 text-sky-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">البوت يعمل فعلياً عبر Telegram API</h4>
+                                <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                                    يمكنك الانتقال فوراً للتطبيق الحقيقي لتجربة إرسال نصوص وصور والتحقق من الاستجابة اللحظية:
+                                </p>
+                            </div>
+                        </div>
+                        <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-all">
+                            <span>فتح @Pharmacy_Bot_text_bot في تطبيق Telegram</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Telegram Simulator Mobile Frame -->
+                <div class="lg:col-span-7 flex justify-center order-1 lg:order-2">
+                    <div class="w-full max-w-[400px] sm:max-w-[425px] rounded-[44px] p-3 bg-slate-900 border-4 border-slate-700 shadow-2xl relative">
+                        <!-- Camera Notch -->
+                        <div class="absolute top-5 left-1/2 -translate-x-1/2 w-28 h-5 bg-slate-800 rounded-full flex items-center justify-center gap-2 z-20">
+                            <span class="w-2.5 h-2.5 rounded-full bg-slate-950"></span>
+                            <span class="w-2 h-2 rounded-full bg-sky-950"></span>
+                        </div>
+
+                        <!-- Inner Screen Frame (Telegram UI) -->
+                        <div id="phoneScreen" class="rounded-[36px] overflow-hidden flex flex-col h-[640px] border border-slate-800 tg-chat-canvas relative transition-all">
+                            
+                            <!-- Telegram Header -->
+                            <div class="bg-[#242f3d] px-4 pt-8 pb-3.5 flex items-center justify-between text-white z-10 shadow border-b border-slate-700/60">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="relative">
+                                        <div class="w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center text-slate-950 font-black text-sm">
+                                            <i data-lucide="bot" class="w-5 h-5 text-slate-950"></i>
+                                        </div>
+                                        <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900"></span>
+                                    </div>
+                                    <div>
+                                        <div class="flex items-center gap-1.5">
+                                            <span class="font-bold text-sm text-slate-100">Pharmacy Assistant Bot</span>
+                                            <i data-lucide="badge-check" class="w-4 h-4 text-sky-400"></i>
+                                        </div>
+                                        <p id="simStatusText" class="text-[10px] text-sky-300 font-medium">bot • @Pharmacy_Bot_text_bot</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-1">
+                                    <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" title="فتح في تليجرام الحقيقي" class="p-2 rounded-full hover:bg-white/10 text-sky-400">
+                                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                                    </a>
+                                    <button onclick="resetSimulatorChat()" title="إعادة تشغيل المحادثة" class="p-2 rounded-full hover:bg-white/10 text-slate-300">
+                                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Chat Messages Canvas -->
+                            <div id="simChatBox" class="flex-1 p-3.5 space-y-3 overflow-y-auto chat-scroll flex flex-col text-sm">
+                                <!-- Messages injected dynamically -->
+                            </div>
+
+                            <!-- Live Typing Indicator -->
+                            <div id="simTypingIndicator" class="px-4 py-2 hidden">
+                                <div class="bg-slate-900/95 border border-slate-800 rounded-2xl rounded-tr-none px-3 py-2 inline-flex items-center gap-1.5 shadow">
+                                    <span class="text-[11px] text-sky-400 font-medium">البوت يكتب الآن</span>
+                                    <div class="flex gap-1 items-center mr-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-bounce"></span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-bounce [animation-delay:0.2s]"></span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-bounce [animation-delay:0.4s]"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Telegram Inline Buttons Container -->
+                            <div class="p-2 bg-slate-900/90 border-t border-slate-800">
+                                <div class="grid grid-cols-2 gap-1.5 text-xs">
+                                    <button onclick="triggerSimPreset('عايز بديل بنفس المادة الفعالة لأوجمنتين 1 جم')" class="p-2 bg-[#2b5278] hover:bg-[#346594] text-white rounded-lg text-center font-bold transition-all">
+                                        💊 استعلام عن بديل
+                                    </button>
+                                    <button onclick="simulatePrescriptionFlow()" class="p-2 bg-[#2b5278] hover:bg-[#346594] text-white rounded-lg text-center font-bold transition-all">
+                                        📸 إرسال روشتة
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Chat Input Bar -->
+                            <div class="p-2.5 bg-slate-900 border-t border-slate-800 flex items-center gap-2 z-10">
+                                <button onclick="simulatePrescriptionFlow()" title="إرفاق صورة روشتة" class="p-2 text-slate-400 hover:text-sky-400 rounded-full transition-colors">
+                                    <i data-lucide="paperclip" class="w-5 h-5"></i>
+                                </button>
+                                <input type="text" id="simUserInput" placeholder="اكتب سؤالك هنا أو اختر من القائمة..." class="flex-1 bg-slate-800 text-xs sm:text-sm text-slate-100 placeholder-slate-400 rounded-full px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-sky-500 border border-slate-700" onkeydown="if(event.key === 'Enter') handleSimSend()">
+                                <button onclick="handleSimSend()" class="w-9 h-9 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 flex items-center justify-center transition-all shadow-md">
+                                    <i data-lucide="send-horizontal" class="w-4 h-4 transform -scale-x-100"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-Industry Automation Capabilities -->
+    <!-- Multi-platform automation offering -->
+    <section id="platforms" class="py-20 bg-gradient-to-b from-[#08111f] to-slate-950 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider">مش محصورين في منصة واحدة</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-2">الأتمتة على المنصة اللي عملاؤك بيستخدموها</h2>
+                <p class="text-slate-400 text-sm mt-3 leading-7">بنصمم الحل حسب طبيعة الشغل والأنظمة المتاحة. المشروع المعروض للتجربة الفعلية حاليًا هو بوت الصيدلية على Telegram؛ باقي المنصات تحتاج تحديد المتطلبات وإعداد التكامل المناسب.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="glass-card rounded-2xl p-6 border-emerald-500/25 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center"><i data-lucide="message-circle" class="w-6 h-6"></i></div>
+                    <h3 class="text-lg font-bold text-white">WhatsApp Business</h3>
+                    <p class="text-sm text-slate-300 leading-6">ردود تلقائية، استقبال طلبات، أسئلة متكررة، وتحويل المحادثة لموظف عند الحاجة.</p>
+                    <span class="inline-flex text-[11px] text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1">تنفيذ حسب المتطلبات وواجهة API</span>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-sky-500/25 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center"><i data-lucide="send" class="w-6 h-6"></i></div>
+                    <h3 class="text-lg font-bold text-white">Telegram Bots</h3>
+                    <p class="text-sm text-slate-300 leading-6">بوتات تفاعلية بالأزرار والنصوص والصور، مع إمكانية ربط قواعد البيانات وخدمات الذكاء الاصطناعي.</p>
+                    <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-bold text-sky-300 hover:text-sky-200">جرّب مشروع الصيدلية <i data-lucide="arrow-left" class="w-4 h-4"></i></a>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-indigo-500/25 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center"><i data-lucide="facebook" class="w-6 h-6"></i></div>
+                    <h3 class="text-lg font-bold text-white">Facebook Messenger</h3>
+                    <p class="text-sm text-slate-300 leading-6">مساعدة صفحات البيزنس في الرد على الاستفسارات، جمع بيانات العملاء، وتنظيم طلبات التواصل.</p>
+                    <span class="inline-flex text-[11px] text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-3 py-1">حل مخصص حسب صلاحيات Meta</span>
+                </div>
+                <div class="glass-card rounded-2xl p-6 border-cyan-500/25 space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center"><i data-lucide="globe" class="w-6 h-6"></i></div>
+                    <h3 class="text-lg font-bold text-white">Website Chatbot</h3>
+                    <p class="text-sm text-slate-300 leading-6">مساعد داخل الموقع للإجابة عن الأسئلة، استقبال طلبات عروض الأسعار، أو البحث في بيانات النشاط.</p>
+                    <span class="inline-flex text-[11px] text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-3 py-1">يتحدد حسب الموقع والبيانات</span>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-xs text-slate-500 leading-6">ملاحظة: عرض المنصة هنا يعني إمكانية تصميم حل مخصص لها، وليس ادعاءً بأن بوت الصيدلية الحالي منشور على جميع المنصات.</div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-slate-950/60 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-wider">مجالات عمل سماء أوتوميشن</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white mt-1">حلول أتمتة شاملة لكافة القطاعات</h2>
+                <p class="text-slate-400 text-sm mt-3">
+                    بينما يعد بوت الصيدلية <strong>@Pharmacy_Bot_text_bot</strong> دراسة الحالة الحية المتاحة للتجربة، تقدم سماء أوتوميشن حلولاً مخصصة لقطاعات أخرى:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Sector 1: Real Estate -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-cyan-500/40 transition-all space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center border border-cyan-500/20">
+                        <i data-lucide="building-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">العقارات وتأهيل المشترين (Lead Gen)</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        تصنيف ميزانيات العملاء، إرسال بروشورات الوحدات المناسبة تلقائياً، وجدولة مواعيد المعاينات في Google Calendar أو CRM الشركات.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 pt-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> فلترة المشترين الجادين تلقائياً</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400"></i> ربط مباشر مع HubSpot / Zoho</li>
+                    </ul>
+                </div>
+
+                <!-- Sector 2: E-Commerce -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-emerald-500/40 transition-all space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
+                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">التجارة الإلكترونية وتتبع الشحنات</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        استعلام لحظي عن حالات الشحن، سياسات الاستبدال واسترجاع المقاسات، وتقديم عروض سريعة ترفع معدل تكرار الشراء.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 pt-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> تتبع بوليصات الشحن آلياً</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> تكامل مع Shopify و Salla و Zid</li>
+                    </ul>
+                </div>
+
+                <!-- Sector 3: B2B Support -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 hover:border-sky-500/40 transition-all space-y-4">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/20">
+                        <i data-lucide="headphones" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">دعم الشركات والخدمات B2B</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        فتح تذاكر الدعم الفني، الإجابة عن الأسئلة المتكررة من وثائق الشركة، وأتمتة مسارات العمل الداخلية عبر n8n وWebhooks.
+                    </p>
+                    <ul class="text-xs text-slate-400 space-y-1.5 pt-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> أتمتة التذاكر وحفظ البيانات</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-400"></i> هندسة مسارات عمل معقدة بـ n8n</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-brief" class="py-16 bg-slate-900/50 border-y border-slate-800">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+            <span class="text-emerald-300 text-xs font-bold">عندك مشروع مختلف؟</span>
+            <h2 class="text-3xl font-black text-white mt-2">خلّينا نحدد إيه اللي ينفع يتأتمت في شغلك</h2>
+            <p class="text-slate-300 text-sm leading-7 mt-3">سواء محتاج بوت محادثة، تنظيم بيانات، ربط أدوات ببعض، أو تقليل خطوات يدوية—ابعت وصف مختصر للمشكلة والمنصة اللي بتستخدمها، ونحدد نطاق الحل قبل التنفيذ.</p>
+            <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-sm inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> تواصل عبر Telegram</a>
+                <button type="button" onclick="copyProjectBrief()" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-sm inline-flex items-center justify-center gap-2"><i data-lucide="copy" class="w-4 h-4"></i> انسخ نموذج وصف المشروع</button>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-3">زر النسخ يجهّز نصًا يمكنك إرساله بنفسك؛ لا توجد استمارة إرسال أو حجز تلقائي في الصفحة حاليًا.</p>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section id="architecture" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-sky-400 text-xs font-bold uppercase tracking-wider">البنية التقنية الموحدة (System Architecture)</span>
+                <h2 class="text-3xl font-black text-white mt-1">كيف يعمل بوت @Pharmacy_Bot_text_bot خلف الكواليس؟</h2>
+                <p class="text-slate-400 text-sm mt-2">
+                    تدفق البيانات لحظياً من خوادم Telegram وحتى الوصول إلى النتيجة الدوائية النهائية:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-3xl border-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-9 h-9 rounded-xl bg-sky-500/10 text-sky-400 font-bold flex items-center justify-center text-sm border border-sky-500/30">01</span>
+                        <i data-lucide="send" class="w-5 h-5 text-sky-400"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Telegram Webhook</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        استقبال فوري عبر خوادم تليجرام المشفرة وتمرير الرسائل النصية والصور بدقة خلال أجزاء من الثانية.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl border-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-400 font-bold flex items-center justify-center text-sm border border-cyan-500/30">02</span>
+                        <i data-lucide="workflow" class="w-5 h-5 text-cyan-400"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">محرك الأتمتة n8n</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        توجيه منطق المحادثة، فلترة الكلمات المفتاحية، وتحديد ما إذا كان الاستفسار يحتاج بحثاً بالمادة الفعالة أو تصعيداً للصيدلي.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl border-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 font-bold flex items-center justify-center text-sm border border-emerald-500/30">03</span>
+                        <i data-lucide="brain-circuit" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">Vision AI & LLMs</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        قراءة خط اليد في الروشتات، التعرف على المواد الفعالة والبدائل، وصياغة الردود بالعامية أو الفصحى بسلاسة.
+                    </p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl border-slate-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-400 font-bold flex items-center justify-center text-sm border border-indigo-500/30">04</span>
+                        <i data-lucide="database" class="w-5 h-5 text-indigo-400"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white mb-2">قاعدة بيانات الصيدلية</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        التحقق من الرصيد المتوفر، أسعار الأدوية المحدثة، وتجهيز الفاتورة للتسليم المباشر عبر الدليفري.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Freelance Leads -->
+    <section id="contact" class="py-16 sm:py-20 bg-slate-950/70 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold">للتعاون والعمل الحر</span>
+            <h2 class="mt-4 text-2xl sm:text-4xl font-black text-white">عندك مهمة متكررة؟ خلّينا نأتمتها</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-7 text-slate-300">أنا <strong class="text-white">Samaa Ahmed</strong>. سواء كنت صاحب مشروع أو فريلانسر محتاج شريك تقني، ابعت تفاصيل الفكرة والمنصة المطلوبة، ونحدد معًا نطاق التنفيذ المناسب.</p>
+            <div class="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 text-right">
+                <div class="glass-card rounded-2xl p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-2"><i data-lucide="briefcase-business" class="w-5 h-5 text-cyan-300"></i><h3 class="font-extrabold text-white">للعملاء وأصحاب البيزنس</h3></div>
+                    <p class="text-sm text-slate-300 leading-6">اشرح المشكلة اللي بتاخد وقت من فريقك، والنتيجة اللي محتاج توصل لها.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-5 sm:p-6">
+                    <div class="flex items-center gap-3 mb-2"><i data-lucide="users" class="w-5 h-5 text-sky-300"></i><h3 class="font-extrabold text-white">للفريلانسرز وشركاء التنفيذ</h3></div>
+                    <p class="text-sm text-slate-300 leading-6">للتعاون في مشاريع البوتات، تكامل الأنظمة، والـ workflow automation.</p>
+                </div>
+            </div>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-right">
+                <a href="mailto:	automationsamaa@gmail.com?subject=استفسار%20عن%20خدمات%20Samaa%20Automation" class="glass-card rounded-2xl p-4 sm:p-5 flex items-center gap-3 hover:border-cyan-400/50 transition-colors min-w-0" aria-label="إرسال بريد إلكتروني إلى Samaa Ahmed">
+                    <span class="w-11 h-11 shrink-0 rounded-xl bg-cyan-500/10 text-cyan-300 flex items-center justify-center"><i data-lucide="mail" class="w-5 h-5"></i></span>
+                    <span class="min-w-0"><span class="block text-xs text-slate-400 mb-1">البريد الإلكتروني</span><span class="block text-sm sm:text-base font-bold text-white break-all">automationsamaa@gmail.com</span></span>
+                </a>
+                
+            </div>
+            <div class="mt-4 flex flex-col sm:flex-row justify-center gap-3">
+                <button type="button" onclick="copyProjectBrief()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-sm inline-flex items-center justify-center gap-2"><i data-lucide="clipboard-copy" class="w-4 h-4"></i> انسخ نموذج طلب مشروع</button>
+                <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-sm inline-flex items-center justify-center gap-2"><i data-lucide="send" class="w-4 h-4"></i> تجربة البوت على Telegram</a>
+            </div>
+            <p class="mt-4 text-xs text-slate-500">للتواصل بخصوص مشروع أو تعاون مهني، استخدم البريد الإلكتروني أو WhatsApp. روابط LinkedIn وGitHub لم تُضف لعدم توفيرها.</p>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="py-20 bg-gradient-to-b from-[#070b14] via-[#041a29] to-[#070b14] border-t border-slate-800 text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>البوت جاهز لتجربتك اللحظية الآن</span>
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-black text-white">
+                ابدأ تجربتك الحية مع <span class="text-sky-400">@Pharmacy_Bot_text_bot</span>
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                لا تعتمد على الكلام النظري! جرّب البوت الفعلي على تليجرام الآن، وشاهد كيف يمكن لـ <strong>سماء أوتوميشن</strong> تحويل أعمالك إلى نظام يعمل ذاتياً باحترافية.
+            </p>
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 hover:brightness-110 text-slate-950 font-black text-base shadow-xl shadow-sky-500/25 active:scale-95 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-5 h-5"></i>
+                    <span>فتح البوت في تطبيق Telegram</span>
+                </a>
+                <button onclick="copyBotLink()" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all">
+                    <i data-lucide="share-2" class="w-4 h-4 text-sky-400"></i>
+                    <span id="copyLinkTextBottom">مشاركة رابط البوت (@Pharmacy_Bot_text_bot)</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-900 text-xs text-slate-500 text-center">
+        <p>© 2026 سماء أوتوميشن | Samaa Automation • حلول الذكاء الاصطناعي والأتمتة متعددة المنصات</p>
+        <p class="mt-1 text-slate-600 font-mono">Official Live Showcase: @Pharmacy_Bot_text_bot on Telegram</p>
+    </footer>
+
+    <!-- Script: Telegram Simulator Logic & Helpers -->
+    <script>
+        lucide.createIcons();
+
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                mobileMenu.classList.toggle('hidden', isOpen);
+                mobileMenuToggle.setAttribute('aria-expanded', String(!isOpen));
+                mobileMenuToggle.setAttribute('aria-label', isOpen ? 'فتح قائمة التنقل' : 'إغلاق قائمة التنقل');
+                mobileMenuToggle.innerHTML = isOpen ? '<i data-lucide="menu" class="w-5 h-5"></i>' : '<i data-lucide="x" class="w-5 h-5"></i>';
+                lucide.createIcons();
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'فتح قائمة التنقل');
+                mobileMenuToggle.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+                lucide.createIcons();
+            }));
+        }
+
+        function copyProjectBrief() {
+            const brief = 'وصف المشروع\nالمجال: \nالمهمة المتكررة التي أريد أتمتتها: \nالمنصة الحالية (WhatsApp / Telegram / Messenger / Website / أخرى): \nالنتيجة المطلوبة: \n';
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(brief).then(() => alert('تم نسخ نموذج وصف المشروع. الصقيه في رسالتك واملئي البيانات.')).catch(() => window.prompt('انسخي نموذج وصف المشروع:', brief));
+            } else {
+                window.prompt('انسخي نموذج وصف المشروع:', brief);
+            }
+        }
+
+        function openTelegramScenario(message) {
+            // Open the real bot directly from a user click; copy the prompt for easy pasting.
+            window.open('https://t.me/Pharmacy_Bot_text_bot', '_blank', 'noopener,noreferrer');
+            const fallback = () => window.prompt('انسخي الرسالة التالية والصقيها في محادثة البوت على Telegram:', message);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(message).then(() => {
+                    alert('فتحنا بوت Telegram ونسخنا الرسالة. الصقيها في المحادثة واضغطي إرسال.');
+                }).catch(fallback);
+            } else {
+                fallback();
+            }
+        }
+
+        function openTelegramPrescriptionScenario() {
+            window.open('https://t.me/Pharmacy_Bot_text_bot', '_blank', 'noopener,noreferrer');
+            alert('تم فتح بوت Telegram. ابعتي صورة الروشتة من داخل المحادثة؛ الموقع لا يرسل الصورة تلقائيًا.');
+        }
+
+        function getTimeFormatted() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'م' : 'ص';
+            hours = hours % 12 || 12;
+            return `${hours}:${minutes} ${ampm}`;
+        }
+
+        function appendSimUserMsg(text) {
+            const chatBox = document.getElementById('simChatBox');
+            const div = document.createElement('div');
+            div.className = 'max-w-[85%] p-3 shadow-sm space-y-1 bg-[#2b5278] text-slate-100 self-end rounded-2xl rounded-tl-none';
+            div.innerHTML = `
+                <p class="text-xs leading-relaxed">${text}</p>
+                <div class="text-[9px] text-slate-300 text-left font-mono">${getTimeFormatted()} ✓✓</div>
+            `;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function appendSimBotMsg(html) {
+            const chatBox = document.getElementById('simChatBox');
+            const div = document.createElement('div');
+            div.className = 'max-w-[88%] p-3 shadow-sm space-y-2 bg-[#182533] text-slate-200 self-start rounded-2xl rounded-tr-none border border-slate-700/60';
+            div.innerHTML = `
+                ${html}
+                <div class="text-[9px] text-slate-400 text-left pt-1 font-mono">${getTimeFormatted()}</div>
+            `;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            lucide.createIcons();
+        }
+
+        function triggerBotTyping(callback, delay = 850) {
+            const typing = document.getElementById('simTypingIndicator');
+            const status = document.getElementById('simStatusText');
+            typing.classList.remove('hidden');
+            status.innerText = 'typing a message...';
+
+            setTimeout(() => {
+                typing.classList.add('hidden');
+                status.innerText = 'bot • @Pharmacy_Bot_text_bot';
+                callback();
+            }, delay);
+        }
+
+        function triggerSimPreset(text) {
+            appendSimUserMsg(text);
+            processBotLogic(text);
+        }
+
+        function handleSimSend() {
+            const input = document.getElementById('simUserInput');
+            const q = input.value.trim();
+            if (!q) return;
+            appendSimUserMsg(q);
+            input.value = '';
+            processBotLogic(q);
+        }
+
+        function processBotLogic(q) {
+            const lower = q.toLowerCase();
+
+            if (lower.includes('بنادول') || lower.includes('سعر')) {
+                triggerBotTyping(() => {
+                    appendSimBotMsg(`
+                        <p class="text-xs leading-relaxed">
+                            مرحباً بك! 💊 صنف <strong>بنادول كولد آند فلو الأزرق (Panadol Cold & Flu)</strong> متوفر حالياً بالصيدلية.
+                        </p>
+                        <div class="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 mt-1 space-y-1.5 text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-white">العلبة 24 قرص:</span>
+                                <span class="text-emerald-400 font-bold">52 ج.م</span>
+                            </div>
+                            <div class="text-[10px] text-slate-400">المخزون اللحظي: 9 علب بالفرع الرئيسي</div>
+                            <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full mt-1 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-[11px] transition-all flex items-center justify-center gap-1">
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                <span>تجربة الطلب في بوت تليجرام الفعلي</span>
+                            </a>
+                        </div>
+                    `);
+                });
+            } else if (lower.includes('بديل') || lower.includes('أوجمنتين')) {
+                triggerBotTyping(() => {
+                    appendSimBotMsg(`
+                        <p class="text-xs leading-relaxed">
+                            أوجمنتين 1 جم غير متوفر حالياً، تم مطابقة المادة الفعالة فوراً <strong>(Amoxicillin + Clavulanic Acid 1g)</strong> وهذه البدائل المعتمدة المتوفرة بالمخزون:
+                        </p>
+                        <div class="space-y-1.5 mt-2 text-xs">
+                            <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-700 flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold text-slate-100">1. ميجاموكس 1 جم (Megamox)</div>
+                                    <div class="text-[10px] text-emerald-400">نفس الفاعلية والجرعة • متوفر 14 علبة</div>
+                                </div>
+                                <span class="font-bold text-white">95 ج.م</span>
+                            </div>
+                            <div class="p-2 rounded-xl bg-slate-900/80 border border-slate-700 flex justify-between items-center">
+                                <div>
+                                    <div class="font-bold text-slate-100">2. كيورام 1 جم (Curam)</div>
+                                    <div class="text-[10px] text-emerald-400">بديل مصرح • متوفر 6 علب</div>
+                                </div>
+                                <span class="font-bold text-white">102 ج.م</span>
+                            </div>
+                        </div>
+                    `);
+                });
+            } else if (lower.includes('صيدلي') || lower.includes('طارئة') || lower.includes('حرجة')) {
+                triggerBotTyping(() => {
+                    appendSimBotMsg(`
+                        <div class="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/40 text-amber-200 space-y-1.5 text-xs">
+                            <div class="flex items-center gap-1.5 font-bold text-amber-300">
+                                <i data-lucide="bell-ring" class="w-4 h-4"></i>
+                                <span>تم تنبيه الصيدلي د. كريم المناوب فوراً</span>
+                            </div>
+                            <p class="text-[11px] leading-relaxed text-slate-300">
+                                تم إرسال إشعار فوري لهاتف الصيدلي وسيتم الرد عليك في خلال دقيقة واحدة للإشراف الطبي.
+                            </p>
+                        </div>
+                    `);
+                });
+            } else {
+                triggerBotTyping(() => {
+                    appendSimBotMsg(`
+                        <p class="text-xs text-slate-200 leading-relaxed">
+                            تم فحص استفسارك: "<strong>${q}</strong>". يمكنك تجربة هذا الاستفسار الآن في البوت الحقيقي على تليجرام: 
+                            <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="text-sky-400 font-mono underline font-bold">@Pharmacy_Bot_text_bot</a>
+                        </p>
+                    `);
+                });
+            }
+        }
+
+        function simulatePrescriptionFlow() {
+            appendSimUserMsg("📎 تم إرسال صورة روشتة_طبية_بخط_يد_الطبيب.jpg");
+            triggerBotTyping(() => {
+                appendSimBotMsg(`
+                    <div class="space-y-2">
+                        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-900/90 p-2 flex items-center gap-3">
+                            <div class="w-12 h-14 bg-slate-800 rounded-lg flex items-center justify-center text-sky-400 shrink-0">
+                                <i data-lucide="file-check" class="w-6 h-6"></i>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-xs font-bold text-white flex items-center gap-1">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                                    <span>تم تحليل الروشتة بواسطة Samaa Vision AI</span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-0.5">تم استخراج وقراءة 2 صنف ومطابقتهم بالمخزون:</div>
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-700/80 space-y-1.5 text-xs">
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span>1. كونترولوك 40 مجم (قرص قبل الإفطار)</span>
+                                <span class="text-emerald-400 font-semibold">120 ج.م</span>
+                            </div>
+                            <div class="flex justify-between items-center text-slate-300">
+                                <span>2. موتيليوم أقراص (قرص قبل الوجبات)</span>
+                                <span class="text-emerald-400 font-semibold">63 ج.م</span>
+                            </div>
+                            <div class="border-t border-slate-800 pt-1 flex justify-between font-bold text-white">
+                                <span>الإجمالي المطلوب:</span>
+                                <span class="text-emerald-400">183 ج.م</span>
+                            </div>
+                        </div>
+
+                        <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" rel="noopener noreferrer" class="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-sky-500 to-emerald-400 text-slate-950 font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5">
+                            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                            <span>أرسل صورة الروشتة للبوت الفعلي على تليجرام</span>
+                        </a>
+                    </div>
+                `);
+            }, 1100);
+        }
+
+        function resetSimulatorChat() {
+            const box = document.getElementById('simChatBox');
+            box.innerHTML = `
+                <div class="text-center my-1">
+                    <span class="text-[10px] font-semibold bg-slate-900 text-slate-400 px-3 py-1 rounded-md border border-slate-800 font-mono">
+                        Telegram Live Session • @Pharmacy_Bot_text_bot
+                    </span>
+                </div>
+                <div class="max-w-[88%] p-3 shadow-sm space-y-2 bg-[#182533] text-slate-200 self-start rounded-2xl rounded-tr-none border border-slate-700/60">
+                    <p class="text-xs leading-relaxed">
+                        أهلاً بك في المساعد الآلي لـ <strong>سماء أوتوميشن</strong> على تليجرام! 🌿<br>
+                        البوت الحقيقي متاح الآن على المعرّف: <a href="https://t.me/Pharmacy_Bot_text_bot" target="_blank" class="text-sky-400 font-bold underline font-mono">@Pharmacy_Bot_text_bot</a>.<br>
+                        يمكنك هنا تجربة الأسئلة المسبقة أو فتح البوت في تليجرام مباشرة.
+                    </p>
+                    <div class="text-[9px] text-slate-400 text-left pt-1 font-mono">${getTimeFormatted()}</div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function copyBotLink() {
+            const botUrl = "https://t.me/Pharmacy_Bot_text_bot";
+            const tempInput = document.createElement("input");
+            tempInput.value = botUrl;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const btnText = document.getElementById("copyLinkText");
+            const btnTextBottom = document.getElementById("copyLinkTextBottom");
+            
+            if (btnText) btnText.innerText = "تم نسخ الرابط بنجاح! ✓";
+            if (btnTextBottom) btnTextBottom.innerText = "تم نسخ رابط @Pharmacy_Bot_text_bot! ✓";
+
+            setTimeout(() => {
+                if (btnText) btnText.innerText = "نسخ رابط البوت المباشر";
+                if (btnTextBottom) btnTextBottom.innerText = "مشاركة رابط البوت (@Pharmacy_Bot_text_bot)";
+            }, 2500);
+        }
+
+        // Initialize Chat
+        resetSimulatorChat();
+    </script>
+</body>
+</html>
